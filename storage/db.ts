@@ -1,7 +1,7 @@
 // storage/db.ts
 import { openDatabaseSync } from "expo-sqlite";
 
-const db = openDatabaseSync("offline-med-aid.db");
+export const db = openDatabaseSync("offline-med-aid.db");
 
 export const initDB = async () => {
   await db.withTransactionSync(() => {
