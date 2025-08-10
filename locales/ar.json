@@ -1,0 +1,70 @@
+{
+  "common": {
+    "home": "الرئيسية",
+    "patients": "المرضى",
+    "addPatient": "إضافة مريض",
+    "explore": "استكشاف",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "search": "بحث",
+    "clear": "مسح",
+    "loading": "جاري التحميل...",
+    "error": "خطأ",
+    "success": "نجح",
+    "required": "مطلوب",
+    "optional": "اختياري",
+    "male": "ذكر",
+    "female": "أنثى",
+    "other": "آخر"
+  },
+  "home": {
+    "welcome": "مرحباً!",
+    "totalPatients": "إجمالي المرضى",
+    "thisWeek": "هذا الأسبوع",
+    "quickActions": "إجراءات سريعة",
+    "development": "التطوير"
+  },
+  "patients": {
+    "title": "قائمة المرضى",
+    "searchPlaceholder": "البحث عن مريض...",
+    "noResults": "لا توجد نتائج",
+    "noResultsDescription": "لا يوجد مريض يطابق بحثك",
+    "noPatients": "لا يوجد مرضى",
+    "noPatientsDescription": "ابدأ بإضافة مريضك الأول",
+    "name": "الاسم",
+    "age": "العمر",
+    "gender": "الجنس",
+    "diagnosis": "التشخيص",
+    "treatment": "العلاج",
+    "date": "التاريخ"
+  },
+  "addPatient": {
+    "title": "مريض جديد",
+    "form": {
+      "name": "اسم المريض",
+      "namePlaceholder": "أدخل الاسم الكامل",
+      "age": "العمر",
+      "agePlaceholder": "أدخل العمر",
+      "gender": "الجنس",
+      "genderPlaceholder": "اختر الجنس",
+      "diagnosis": "التشخيص",
+      "diagnosisPlaceholder": "أدخل التشخيص",
+      "treatment": "العلاج",
+      "treatmentPlaceholder": "أدخل العلاج (اختياري)",
+      "date": "تاريخ الاستشارة",
+      "datePlaceholder": "اختر التاريخ"
+    },
+    "validation": {
+      "nameRequired": "الاسم والتشخيص مطلوبان.",
+      "ageInvalid": "يجب أن يكون العمر رقماً صحيحاً بين 0 و 150."
+    },
+    "success": "تم حفظ المريض بنجاح!",
+    "error": "خطأ في حفظ المريض."
+  },
+  "settings": {
+    "language": "اللغة",
+    "selectLanguage": "اختر اللغة"
+  }
+}

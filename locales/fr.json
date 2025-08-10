@@ -1,0 +1,70 @@
+{
+  "common": {
+    "home": "Accueil",
+    "patients": "Patients",
+    "addPatient": "Ajouter Patient",
+    "explore": "Explorer",
+    "save": "Sauvegarder",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "search": "Rechercher",
+    "clear": "Effacer",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "required": "Requis",
+    "optional": "Optionnel",
+    "male": "Masculin",
+    "female": "Féminin",
+    "other": "Autre"
+  },
+  "home": {
+    "welcome": "Bienvenue !",
+    "totalPatients": "Total Patients",
+    "thisWeek": "Cette Semaine",
+    "quickActions": "Actions Rapides",
+    "development": "Développement"
+  },
+  "patients": {
+    "title": "Liste des Patients",
+    "searchPlaceholder": "Rechercher un patient...",
+    "noResults": "Aucun résultat",
+    "noResultsDescription": "Aucun patient ne correspond à votre recherche",
+    "noPatients": "Aucun patient",
+    "noPatientsDescription": "Commencez par ajouter votre premier patient",
+    "name": "Nom",
+    "age": "Âge",
+    "gender": "Genre",
+    "diagnosis": "Diagnostic",
+    "treatment": "Traitement",
+    "date": "Date"
+  },
+  "addPatient": {
+    "title": "Nouveau Patient",
+    "form": {
+      "name": "Nom du patient",
+      "namePlaceholder": "Entrez le nom complet",
+      "age": "Âge",
+      "agePlaceholder": "Entrez l'âge",
+      "gender": "Genre",
+      "genderPlaceholder": "Sélectionnez le genre",
+      "diagnosis": "Diagnostic",
+      "diagnosisPlaceholder": "Entrez le diagnostic",
+      "treatment": "Traitement",
+      "treatmentPlaceholder": "Entrez le traitement (optionnel)",
+      "date": "Date de consultation",
+      "datePlaceholder": "Sélectionnez la date"
+    },
+    "validation": {
+      "nameRequired": "Le nom et le diagnostic sont requis.",
+      "ageInvalid": "L'âge doit être un nombre valide entre 0 et 150."
+    },
+    "success": "Patient enregistré avec succès !",
+    "error": "Erreur lors de l'enregistrement du patient."
+  },
+  "settings": {
+    "language": "Langue",
+    "selectLanguage": "Sélectionner la langue"
+  }
+}

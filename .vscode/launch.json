@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Expo on iOS Simulator",
+      "type": "reactnative",
+      "request": "launch",
+      "platform": "ios",
+      "target": "simulator",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Launch Expo on Android Emulator",
+      "type": "reactnative",
+      "request": "launch",
+      "platform": "android",
+      "target": "emulator",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}
