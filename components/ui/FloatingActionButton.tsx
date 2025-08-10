@@ -30,7 +30,7 @@ export const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({
   };
 
   const variantClasses = {
-    primary: "bg-primary-600",
+    primary: "bg-blue-600",
     secondary: "bg-gray-600",
     success: "bg-green-600",
     warning: "bg-yellow-600",
@@ -43,17 +43,17 @@ export const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({
     <TouchableOpacity
       onPress={onPress}
       disabled={disabled}
-      className={`${sizeClasses[size]} ${variantClasses[variant]} ${disabledClasses} rounded-full items-center justify-center shadow-lg`}
+      className={`${sizeClasses[size]} ${variantClasses[variant]} ${disabledClasses} rounded-full items-center justify-center shadow-lg absolute bottom-6 right-6 active:scale-95`}
       activeOpacity={disabled ? 1 : 0.8}
       style={{
         shadowColor: "#000",
         shadowOffset: {
           width: 0,
-          height: 2,
+          height: 4,
         },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
+        shadowOpacity: 0.3,
+        shadowRadius: 6,
+        elevation: 8,
       }}
     >
       <IconSymbol name={icon} size={iconSizes[size]} color="white" />

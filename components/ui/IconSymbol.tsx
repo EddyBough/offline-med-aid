@@ -24,6 +24,13 @@ const MAPPING = {
   "person.fill": "person",
   "person.badge.plus": "person-add",
   "paintbrush.fill": "brush",
+  pencil: "edit",
+  trash: "delete",
+  calendar: "event",
+  magnifyingglass: "search",
+  plus: "add",
+  xmark: "close",
+  checkmark: "check",
 } as IconMapping;
 
 /**

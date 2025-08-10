@@ -1,10 +1,8 @@
-import { Image } from "expo-image";
 import { useRouter } from "expo-router";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Platform, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 
-import { HelloWave } from "@/components/HelloWave";
-import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { Button } from "@/components/ui/Button";
@@ -12,16 +10,10 @@ import { Card } from "@/components/ui/Card";
 import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
 import { StatsCard } from "@/components/ui/StatsCard";
 import { PatientRepo } from "@/storage/patientRepo";
-import { useEffect, useState } from "react";
 
 export default function HomeScreen() {
   const { t, ready } = useTranslation();
   const router = useRouter();
-
-  // Attendre que les traductions soient chargées
-  if (!ready) {
-    return null;
-  }
   const [stats, setStats] = useState({
     totalPatients: 0,
     recentPatients: 0,
@@ -41,86 +33,67 @@ export default function HomeScreen() {
     });
   }, []);
 
+  // Attendre que les traductions soient chargées
+  if (!ready) {
+    return null;
+  }
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
-      headerImage={
-        <Image
-          source={require("@/assets/images/partial-react-logo.png")}
-          style={styles.reactLogo}
-        />
-      }
-    >
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">{t("home.welcome")}</ThemedText>
-        <HelloWave />
-      </ThemedView>
+    <ScrollView className="flex-1 bg-gray-50 mt-20">
+      <View className="p-6">
+        <ThemedView style={styles.titleContainer}>
+          <ThemedText type="title">{t("home.welcome")}</ThemedText>
+        </ThemedView>
 
-      {/* Sélecteur de langue */}
-      <ThemedView style={styles.languageContainer}>
-        <LanguageSwitcher />
-      </ThemedView>
+        {/* Sélecteur de langue */}
+        <ThemedView style={styles.languageContainer}>
+          <LanguageSwitcher />
+        </ThemedView>
 
-      <ThemedView style={styles.statsContainer}>
-        <StatsCard
-          title={t("home.totalPatients")}
-          value={stats.totalPatients.toString()}
-          icon="house.fill"
-          variant="primary"
-        />
-        <StatsCard
-          title={t("home.thisWeek")}
-          value={stats.recentPatients.toString()}
-          icon="paperplane.fill"
-          variant="info"
-        />
-      </ThemedView>
+        <ThemedView style={styles.statsContainer}>
+          <StatsCard
+            title={t("home.totalPatients")}
+            value={stats.totalPatients.toString()}
+            icon="house.fill"
+            variant="primary"
+          />
+          <StatsCard
+            title={t("home.thisWeek")}
+            value={stats.recentPatients.toString()}
+            icon="paperplane.fill"
+            variant="info"
+          />
+        </ThemedView>
 
-      <ThemedView style={styles.actionsContainer}>
-        <Card className="p-6 mb-4" variant="elevated">
-          <ThemedText type="subtitle" className="mb-4">
-            {t("home.quickActions")}
-          </ThemedText>
+        <ThemedView style={styles.actionsContainer}>
+          <Card className="p-6 mb-4" variant="elevated">
+            <ThemedText type="subtitle" className="mb-4">
+              {t("home.quickActions")}
+            </ThemedText>
 
-          <View className="space-y-3">
-            <Button
-              onPress={() => router.push("/(tabs)/add-patient")}
-              variant="primary"
-              size="lg"
-              className="w-full"
-            >
-              {t("common.addPatient")}
-            </Button>
+            <View className="space-y-4">
+              <Button
+                onPress={() => router.push("/(tabs)/add-patient")}
+                variant="primary"
+                size="lg"
+                className="w-full"
+              >
+                {t("common.addPatient")}
+              </Button>
 
-            <Button
-              onPress={() => router.push("/(tabs)/patient")}
-              variant="outline"
-              size="lg"
-              className="w-full"
-            >
-              {t("common.patients")}
-            </Button>
-          </View>
-        </Card>
-      </ThemedView>
-
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Développement</ThemedText>
-        <ThemedText>
-          Éditez{" "}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText>{" "}
-          pour voir les changements. Appuyez sur{" "}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: "cmd + d",
-              android: "cmd + m",
-              web: "F12",
-            })}
-          </ThemedText>{" "}
-          pour ouvrir les outils de développement.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+              <Button
+                onPress={() => router.push("/(tabs)/patient")}
+                variant="outline"
+                size="lg"
+                className="w-full mt-3"
+              >
+                {t("common.patients")}
+              </Button>
+            </View>
+          </Card>
+        </ThemedView>
+      </View>
+    </ScrollView>
   );
 }
 
@@ -141,16 +114,5 @@ const styles = StyleSheet.create({
   },
   actionsContainer: {
     marginBottom: 24,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: "absolute",
   },
 });

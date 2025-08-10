@@ -2,6 +2,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Text, TouchableOpacity, View } from "react-native";
+import { IconSymbol } from "./IconSymbol";
 import { Modal } from "./Modal";
 
 interface LanguageSwitcherProps {
@@ -58,30 +59,40 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
         visible={isModalVisible}
         onClose={() => setIsModalVisible(false)}
         title={t("settings.selectLanguage")}
+        variant="bottomSheet"
       >
-        <View className="space-y-2">
+        <View className="space-y-3">
           {availableLanguages.map((language) => (
             <TouchableOpacity
               key={language.code}
               onPress={() => handleLanguageSelect(language.code)}
-              className={`p-4 rounded-lg border ${
+              className={`p-4 rounded-lg border-2 ${
                 currentLanguage === language.code
-                  ? "bg-blue-50 border-blue-200"
+                  ? "bg-blue-50 border-blue-300"
                   : "bg-white border-gray-200"
               }`}
             >
-              <Text
-                className={`font-medium ${
-                  currentLanguage === language.code
-                    ? "text-blue-600"
-                    : "text-gray-900"
-                }`}
-              >
-                {language.nativeName}
-              </Text>
-              <Text className="text-gray-500 text-sm mt-1">
-                {language.name}
-              </Text>
+              <View className="flex-row items-center justify-between">
+                <View className="flex-1">
+                  <Text
+                    className={`text-lg font-semibold ${
+                      currentLanguage === language.code
+                        ? "text-blue-700"
+                        : "text-gray-900"
+                    }`}
+                  >
+                    {language.nativeName}
+                  </Text>
+                  <Text className="text-gray-500 text-sm mt-1">
+                    {language.name}
+                  </Text>
+                </View>
+                {currentLanguage === language.code && (
+                  <View className="ml-3">
+                    <IconSymbol name="checkmark" size={20} color="#1D4ED8" />
+                  </View>
+                )}
+              </View>
             </TouchableOpacity>
           ))}
         </View>

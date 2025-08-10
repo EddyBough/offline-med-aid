@@ -17,9 +17,9 @@ export const Button: React.FC<ButtonProps> = ({
   const baseClasses = "rounded-xl font-semibold items-center justify-center";
 
   const variantClasses = {
-    primary: "bg-primary-600",
-    secondary: "bg-gray-200",
-    outline: "bg-transparent border border-primary-600",
+    primary: "bg-black",
+    secondary: "bg-gray-800",
+    outline: "bg-transparent border-2 border-black",
     danger: "bg-red-600",
   };
 
@@ -35,7 +35,7 @@ export const Button: React.FC<ButtonProps> = ({
     <TouchableOpacity className={classes} activeOpacity={0.8} {...props}>
       <Text
         className={`font-semibold ${
-          variant === "outline" ? "text-primary-600" : "text-white"
+          variant === "outline" ? "text-black" : "text-white"
         }`}
       >
         {children}

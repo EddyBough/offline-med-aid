@@ -1,5 +1,6 @@
 import { insertPatient } from "@/storage/db";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Alert, ScrollView, Text, View } from "react-native";
 import { FormField } from "./FormField";
 import { Button } from "./ui/Button";
@@ -8,6 +9,7 @@ import { DatePicker } from "./ui/DatePicker";
 import { Select } from "./ui/Select";
 
 export const AddPatientForm = () => {
+  const { t, ready } = useTranslation();
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
@@ -16,20 +18,25 @@ export const AddPatientForm = () => {
   const [date, setDate] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Attendre que les traductions soient chargées
+  if (!ready) {
+    return null;
+  }
+
   const genderOptions = [
-    { label: "Masculin", value: "M" },
-    { label: "Féminin", value: "F" },
-    { label: "Autre", value: "A" },
+    { label: t("common.male"), value: "M" },
+    { label: t("common.female"), value: "F" },
+    { label: t("common.other"), value: "A" },
   ];
 
   const handleSubmit = async () => {
     if (!name.trim() || !diagnosis.trim()) {
-      Alert.alert("Erreur", "Le nom et le diagnostic sont requis.");
+      Alert.alert(t("common.error"), t("addPatient.validation.nameRequired"));
       return;
     }
 
     if (age && (isNaN(Number(age)) || Number(age) < 0 || Number(age) > 150)) {
-      Alert.alert("Erreur", "L'âge doit être un nombre valide entre 0 et 150.");
+      Alert.alert(t("common.error"), t("addPatient.validation.ageInvalid"));
       return;
     }
 
@@ -45,11 +52,11 @@ export const AddPatientForm = () => {
         date
       );
 
-      Alert.alert("Succès", "Patient enregistré avec succès !");
+      Alert.alert(t("common.success"), t("addPatient.success"));
       resetForm();
     } catch (error) {
       console.error(error);
-      Alert.alert("Erreur", "Échec de l'enregistrement. Veuillez réessayer.");
+      Alert.alert(t("common.error"), t("addPatient.error"));
     } finally {
       setIsSubmitting(false);
     }
@@ -69,16 +76,16 @@ export const AddPatientForm = () => {
       <View className="p-6">
         <Card className="p-6 mb-6" variant="elevated">
           <Text className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Nouveau Patient
+            {t("addPatient.title")}
           </Text>
 
           <View className="space-y-4">
             <FormField
-              label="Nom complet *"
+              label={`${t("addPatient.form.name")} *`}
               value={name}
               onChange={setName}
               required={true}
-              placeholder="Entrez le nom complet"
+              placeholder={t("addPatient.form.namePlaceholder")}
             />
 
             <FormField
@@ -128,25 +135,25 @@ export const AddPatientForm = () => {
           </View>
         </Card>
 
-        <View className="flex-row space-x-4">
+        <View className="flex-row justify-center">
           <Button
             onPress={handleSubmit}
             variant="primary"
             size="lg"
-            className="flex-1"
+            className="mr-3 w-40"
             disabled={isSubmitting}
           >
-            {isSubmitting ? "Enregistrement..." : "Enregistrer"}
+            {isSubmitting ? t("common.loading") : t("common.save")}
           </Button>
 
           <Button
             onPress={resetForm}
             variant="secondary"
             size="lg"
-            className="flex-1"
+            className="w-40"
             disabled={isSubmitting}
           >
-            Réinitialiser
+            {t("common.cancel")}
           </Button>
         </View>
       </View>
