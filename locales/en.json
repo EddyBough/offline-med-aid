@@ -1,0 +1,70 @@
+{
+  "common": {
+    "home": "Home",
+    "patients": "Patients",
+    "addPatient": "Add Patient",
+    "explore": "Explore",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search",
+    "clear": "Clear",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "required": "Required",
+    "optional": "Optional",
+    "male": "Male",
+    "female": "Female",
+    "other": "Other"
+  },
+  "home": {
+    "welcome": "Welcome!",
+    "totalPatients": "Total Patients",
+    "thisWeek": "This Week",
+    "quickActions": "Quick Actions",
+    "development": "Development"
+  },
+  "patients": {
+    "title": "Patients List",
+    "searchPlaceholder": "Search for a patient...",
+    "noResults": "No results",
+    "noResultsDescription": "No patient matches your search",
+    "noPatients": "No patients",
+    "noPatientsDescription": "Start by adding your first patient",
+    "name": "Name",
+    "age": "Age",
+    "gender": "Gender",
+    "diagnosis": "Diagnosis",
+    "treatment": "Treatment",
+    "date": "Date"
+  },
+  "addPatient": {
+    "title": "New Patient",
+    "form": {
+      "name": "Patient name",
+      "namePlaceholder": "Enter full name",
+      "age": "Age",
+      "agePlaceholder": "Enter age",
+      "gender": "Gender",
+      "genderPlaceholder": "Select gender",
+      "diagnosis": "Diagnosis",
+      "diagnosisPlaceholder": "Enter diagnosis",
+      "treatment": "Treatment",
+      "treatmentPlaceholder": "Enter treatment (optional)",
+      "date": "Consultation date",
+      "datePlaceholder": "Select date"
+    },
+    "validation": {
+      "nameRequired": "Name and diagnosis are required.",
+      "ageInvalid": "Age must be a valid number between 0 and 150."
+    },
+    "success": "Patient saved successfully!",
+    "error": "Error saving patient."
+  },
+  "settings": {
+    "language": "Language",
+    "selectLanguage": "Select language"
+  }
+}
