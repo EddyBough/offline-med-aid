@@ -13,7 +13,7 @@ export default function TabLayout() {
   const { t, ready } = useTranslation();
   const colorScheme = useColorScheme();
 
-  // Attendre que les traductions soient chargées
+  // wait for translations to be loaded
   if (!ready) {
     return null;
   }
@@ -27,7 +27,7 @@ export default function TabLayout() {
         tabBarBackground: TabBarBackground,
         tabBarStyle: Platform.select({
           ios: {
-            // Use a transparent background on iOS to show the blur effect
+            // Use a transparent background on iOS
             position: "absolute",
           },
           default: {},
@@ -61,15 +61,7 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: t("common.explore"),
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="paperplane.fill" color={color} />
-          ),
-        }}
-      />
+
     </Tabs>
   );
 }
