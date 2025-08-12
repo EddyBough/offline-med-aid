@@ -45,9 +45,7 @@
     "editPatientConfirm": "Are you sure you want to edit this patient?",
     "updateSuccess": "Patient updated successfully!",
     "updateError": "Error updating patient.",
-    "deleteConfirm": "Are you sure you want to delete this patient?",
-    "details": "Details",
-    "viewDetails": "View details of"
+    "deleteConfirm": "Are you sure you want to delete this patient?"
   },
   "addPatient": {
     "title": "New Patient",

@@ -85,13 +85,6 @@ export default function PatientsScreen() {
   const renderPatientCard = ({ item }: { item: any }) => (
     <PatientCard
       patient={item}
-      onPress={() => {
-        // TODO: Naviguer vers les détails du patient
-        Alert.alert(
-          t("patients.details"),
-          `${t("patients.viewDetails")} ${item.name}`
-        );
-      }}
       onEdit={() => handleEditPatient(item)}
       onDelete={() => handleDeletePatient(item.id, item.name)}
     />

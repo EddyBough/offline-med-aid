@@ -1,4 +1,4 @@
-import { updatePatient } from "@/storage/db";
+import { PatientRepo } from "@/storage/patientRepo";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Alert, ScrollView, Text, View } from "react-native";
@@ -91,7 +91,7 @@ export const EditPatientModal: React.FC<EditPatientModalProps> = ({
     setIsSubmitting(true);
 
     try {
-      await updatePatient(
+      PatientRepo.update(
         patient.id,
         name.trim(),
         age ? parseInt(age) : 0,
