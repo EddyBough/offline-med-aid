@@ -14,14 +14,12 @@ interface PatientCardProps {
     treatment?: string;
     date?: string;
   };
-  onPress?: () => void;
   onEdit?: () => void;
   onDelete?: () => void;
 }
 
 export const PatientCard: React.FC<PatientCardProps> = ({
   patient,
-  onPress,
   onEdit,
   onDelete,
 }) => {
@@ -58,11 +56,7 @@ export const PatientCard: React.FC<PatientCardProps> = ({
   };
 
   return (
-    <TouchableOpacity
-      onPress={onPress}
-      className="bg-white rounded-xl border border-gray-200 shadow-sm mb-3 overflow-hidden active:scale-[0.98] transition-transform"
-      activeOpacity={0.7}
-    >
+    <View className="bg-white rounded-xl border border-gray-200 shadow-sm mb-3 overflow-hidden">
       {/* Header avec nom et actions */}
       <View className="flex-row justify-between items-start p-4 pb-3">
         <View className="flex-1">
@@ -144,27 +138,12 @@ export const PatientCard: React.FC<PatientCardProps> = ({
 
         {/* Footer avec date */}
         {patient.date && (
-          <View className="flex-row items-center justify-between pt-2 border-t border-gray-100">
-            <View className="flex-row items-center">
-              <IconSymbol name="calendar" size={14} color="#9CA3AF" />
-              <Text className="text-xs text-gray-500 ml-2">{patient.date}</Text>
-            </View>
-            <TouchableOpacity
-              onPress={(e) => {
-                e.stopPropagation();
-                onPress?.();
-              }}
-              className="flex-row items-center"
-              activeOpacity={0.7}
-            >
-              <Text className="text-xs text-blue-600 font-medium mr-1">
-                {ready ? t("patients.viewDetails") : "Voir détails"}
-              </Text>
-              <IconSymbol name="chevron.right" size={12} color="#2563EB" />
-            </TouchableOpacity>
+          <View className="flex-row items-center pt-2 border-t border-gray-100">
+            <IconSymbol name="calendar" size={14} color="#9CA3AF" />
+            <Text className="text-xs text-gray-500 ml-2">{patient.date}</Text>
           </View>
         )}
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };

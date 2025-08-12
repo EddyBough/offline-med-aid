@@ -1,4 +1,4 @@
-import { insertPatient } from "@/storage/db";
+import { PatientRepo } from "@/storage/patientRepo";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Alert, ScrollView, Text, View } from "react-native";
@@ -43,7 +43,7 @@ export const AddPatientForm = () => {
     setIsSubmitting(true);
 
     try {
-      await insertPatient(
+      PatientRepo.create(
         name.trim(),
         age ? parseInt(age) : 0,
         gender,

@@ -44,9 +44,7 @@
     "editPatientConfirm": "هل أنت متأكد من تعديل هذا المريض؟",
     "updateSuccess": "تم تعديل المريض بنجاح!",
     "updateError": "خطأ في تعديل المريض.",
-    "deleteConfirm": "هل أنت متأكد من حذف هذا المريض؟",
-    "details": "التفاصيل",
-    "viewDetails": "عرض تفاصيل"
+    "deleteConfirm": "هل أنت متأكد من حذف هذا المريض؟"
   },
   "addPatient": {
     "title": "مريض جديد",
