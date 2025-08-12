@@ -36,6 +36,25 @@ export const insertPatient = async (
   });
 };
 
+export const updatePatient = async (
+  id: number,
+  name: string,
+  age: number,
+  gender: string,
+  diagnosis: string,
+  treatment: string,
+  date: string
+) => {
+  await db.withTransactionSync(() => {
+    db.runSync(
+      `UPDATE patients 
+       SET name = ?, age = ?, gender = ?, diagnosis = ?, treatment = ?, date = ?
+       WHERE id = ?`,
+      [name, age, gender, diagnosis, treatment, date, id]
+    );
+  });
+};
+
 export const getPatients = (): any[] => {
   let rows: any[] = [];
 

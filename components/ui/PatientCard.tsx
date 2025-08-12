@@ -25,7 +25,7 @@ export const PatientCard: React.FC<PatientCardProps> = ({
   onEdit,
   onDelete,
 }) => {
-  const { t } = useTranslation();
+  const { t, ready } = useTranslation();
 
   const getGenderBadgeVariant = (gender?: string) => {
     switch (gender?.toLowerCase()) {
@@ -36,9 +36,9 @@ export const PatientCard: React.FC<PatientCardProps> = ({
       case "f":
       case "female":
       case "féminin":
-        return "secondary" as const;
+        return "success" as const;
       default:
-        return "outline" as const;
+        return "default" as const;
     }
   };
 
@@ -72,18 +72,14 @@ export const PatientCard: React.FC<PatientCardProps> = ({
           <View className="flex-row items-center space-x-2">
             {patient.age && (
               <Text className="text-sm text-gray-600">
-                {patient.age} {t("patients.age").toLowerCase()}
+                {patient.age} {ready ? t("patients.age").toLowerCase() : "ans"}
               </Text>
             )}
             {patient.age && patient.gender && (
               <Text className="text-gray-300">•</Text>
             )}
             {patient.gender && (
-              <Badge
-                variant={getGenderBadgeVariant(patient.gender)}
-                size="sm"
-                className="flex-row items-center"
-              >
+              <Badge variant={getGenderBadgeVariant(patient.gender)} size="sm">
                 <Text className="text-xs mr-1">
                   {getGenderIcon(patient.gender)}
                 </Text>
@@ -94,10 +90,13 @@ export const PatientCard: React.FC<PatientCardProps> = ({
         </View>
 
         {/* Actions */}
-        <View className="flex-row space-x-2 ml-3">
+        <View className="flex-row space-x-3 ml-4">
           {onEdit && (
             <TouchableOpacity
-              onPress={onEdit}
+              onPress={(e) => {
+                e.stopPropagation();
+                onEdit();
+              }}
               className="w-8 h-8 rounded-lg bg-gray-100 items-center justify-center"
               activeOpacity={0.7}
             >
@@ -106,7 +105,10 @@ export const PatientCard: React.FC<PatientCardProps> = ({
           )}
           {onDelete && (
             <TouchableOpacity
-              onPress={onDelete}
+              onPress={(e) => {
+                e.stopPropagation();
+                onDelete();
+              }}
               className="w-8 h-8 rounded-lg bg-red-50 items-center justify-center"
               activeOpacity={0.7}
             >
@@ -121,7 +123,7 @@ export const PatientCard: React.FC<PatientCardProps> = ({
         {/* Diagnostic */}
         <View className="bg-blue-50 rounded-lg p-3 mb-3">
           <Text className="text-xs font-medium text-blue-700 mb-1 uppercase tracking-wide">
-            {t("patients.diagnosis")}
+            {ready ? t("patients.diagnosis") : "DIAGNOSTIC"}
           </Text>
           <Text className="text-sm text-blue-900 leading-5">
             {patient.diagnosis}
@@ -132,7 +134,7 @@ export const PatientCard: React.FC<PatientCardProps> = ({
         {patient.treatment && (
           <View className="bg-green-50 rounded-lg p-3 mb-3">
             <Text className="text-xs font-medium text-green-700 mb-1 uppercase tracking-wide">
-              {t("patients.treatment")}
+              {ready ? t("patients.treatment") : "TRAITEMENT"}
             </Text>
             <Text className="text-sm text-green-900 leading-5">
               {patient.treatment}
@@ -148,12 +150,15 @@ export const PatientCard: React.FC<PatientCardProps> = ({
               <Text className="text-xs text-gray-500 ml-2">{patient.date}</Text>
             </View>
             <TouchableOpacity
-              onPress={onPress}
+              onPress={(e) => {
+                e.stopPropagation();
+                onPress?.();
+              }}
               className="flex-row items-center"
               activeOpacity={0.7}
             >
               <Text className="text-xs text-blue-600 font-medium mr-1">
-                Voir détails
+                {ready ? t("patients.viewDetails") : "Voir détails"}
               </Text>
               <IconSymbol name="chevron.right" size={12} color="#2563EB" />
             </TouchableOpacity>
