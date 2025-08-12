@@ -1,3 +1,4 @@
+import { EditPatientModal } from "@/components/ui/EditPatientModal";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { FloatingActionButton } from "@/components/ui/FloatingActionButton";
 import { Header } from "@/components/ui/Header";
@@ -16,11 +17,8 @@ export default function PatientsScreen() {
   const [patients, setPatients] = useState<any[]>([]);
   const [refreshing, setRefreshing] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-
-  // Attendre que les traductions soient chargées
-  if (!ready) {
-    return null;
-  }
+  const [editingPatient, setEditingPatient] = useState<any>(null);
+  const [isEditModalVisible, setIsEditModalVisible] = useState(false);
 
   const loadPatients = () => {
     const data = PatientRepo.getAll();
@@ -54,29 +52,34 @@ export default function PatientsScreen() {
   };
 
   const handleDeletePatient = (patientId: number, patientName: string) => {
-    Alert.alert(
-      t("common.delete"),
-      `Êtes-vous sûr de vouloir supprimer ${patientName} ?`,
-      [
-        {
-          text: t("common.cancel"),
-          style: "cancel",
+    Alert.alert(t("common.delete"), t("patients.deleteConfirm"), [
+      {
+        text: t("common.cancel"),
+        style: "cancel",
+      },
+      {
+        text: t("common.delete"),
+        style: "destructive",
+        onPress: () => {
+          PatientRepo.delete(patientId);
+          loadPatients();
         },
-        {
-          text: t("common.delete"),
-          style: "destructive",
-          onPress: () => {
-            PatientRepo.delete(patientId);
-            loadPatients();
-          },
-        },
-      ]
-    );
+      },
+    ]);
   };
 
-  const handleEditPatient = (patientId: number) => {
-    // TODO: Naviguer vers l'écran d'édition
-    Alert.alert("Édition", "Fonctionnalité d'édition à venir");
+  const handleEditPatient = (patient: any) => {
+    setEditingPatient(patient);
+    setIsEditModalVisible(true);
+  };
+
+  const handlePatientUpdated = () => {
+    loadPatients();
+  };
+
+  const handleCloseEditModal = () => {
+    setIsEditModalVisible(false);
+    setEditingPatient(null);
   };
 
   const renderPatientCard = ({ item }: { item: any }) => (
@@ -84,12 +87,20 @@ export default function PatientsScreen() {
       patient={item}
       onPress={() => {
         // TODO: Naviguer vers les détails du patient
-        Alert.alert("Détails", `Voir les détails de ${item.name}`);
+        Alert.alert(
+          t("patients.details"),
+          `${t("patients.viewDetails")} ${item.name}`
+        );
       }}
-      onEdit={() => handleEditPatient(item.id)}
+      onEdit={() => handleEditPatient(item)}
       onDelete={() => handleDeletePatient(item.id, item.name)}
     />
   );
+
+  // Attendre que les traductions soient chargées
+  if (!ready) {
+    return null;
+  }
 
   return (
     <SafeAreaView className="flex-1 bg-gray-50">
@@ -134,6 +145,13 @@ export default function PatientsScreen() {
         onPress={() => router.push("/(tabs)/add-patient")}
         variant="primary"
         size="lg"
+      />
+
+      <EditPatientModal
+        visible={isEditModalVisible}
+        onClose={handleCloseEditModal}
+        patient={editingPatient}
+        onPatientUpdated={handlePatientUpdated}
       />
     </SafeAreaView>
   );

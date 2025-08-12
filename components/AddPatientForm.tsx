@@ -89,47 +89,47 @@ export const AddPatientForm = () => {
             />
 
             <FormField
-              label="Âge"
+              label={t("addPatient.form.age")}
               value={age}
               onChange={setAge}
-              placeholder="Entrez l'âge"
+              placeholder={t("addPatient.form.agePlaceholder")}
             />
 
             <View>
               <Text className="text-sm font-medium text-gray-700 mb-2">
-                Sexe
+                {t("addPatient.form.gender")}
               </Text>
               <Select
                 value={gender}
                 onValueChange={setGender}
                 options={genderOptions}
-                placeholder="Sélectionnez le sexe"
+                placeholder={t("addPatient.form.genderPlaceholder")}
               />
             </View>
 
             <FormField
-              label="Diagnostic *"
+              label={`${t("addPatient.form.diagnosis")} *`}
               value={diagnosis}
               onChange={setDiagnosis}
               required={true}
-              placeholder="Entrez le diagnostic"
+              placeholder={t("addPatient.form.diagnosisPlaceholder")}
             />
 
             <FormField
-              label="Traitement"
+              label={t("addPatient.form.treatment")}
               value={treatment}
               onChange={setTreatment}
-              placeholder="Entrez le traitement prescrit"
+              placeholder={t("addPatient.form.treatmentPlaceholder")}
             />
 
             <View>
               <Text className="text-sm font-medium text-gray-700 mb-2">
-                Date de consultation
+                {t("addPatient.form.date")}
               </Text>
               <DatePicker
                 value={date}
                 onValueChange={setDate}
-                placeholder="Sélectionnez la date"
+                placeholder={t("addPatient.form.datePlaceholder")}
               />
             </View>
           </View>

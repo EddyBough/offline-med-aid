@@ -17,7 +17,9 @@
     "optional": "Optionnel",
     "male": "Masculin",
     "female": "Féminin",
-    "other": "Autre"
+    "other": "Autre",
+    "confirm": "Confirmer",
+    "back": "Retour"
   },
   "home": {
     "welcome": "Bienvenue !",
@@ -38,7 +40,14 @@
     "gender": "Genre",
     "diagnosis": "Diagnostic",
     "treatment": "Traitement",
-    "date": "Date"
+    "date": "Date",
+    "editPatient": "Modifier le patient",
+    "editPatientConfirm": "Êtes-vous sûr de vouloir modifier ce patient ?",
+    "updateSuccess": "Patient modifié avec succès !",
+    "updateError": "Erreur lors de la modification du patient.",
+    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer ce patient ?",
+    "details": "Détails",
+    "viewDetails": "Voir les détails de"
   },
   "addPatient": {
     "title": "Nouveau Patient",
@@ -62,6 +71,29 @@
     },
     "success": "Patient enregistré avec succès !",
     "error": "Erreur lors de l'enregistrement du patient."
+  },
+  "editPatient": {
+    "title": "Modifier le patient",
+    "form": {
+      "name": "Nom du patient",
+      "namePlaceholder": "Entrez le nom complet",
+      "age": "Âge",
+      "agePlaceholder": "Entrez l'âge",
+      "gender": "Genre",
+      "genderPlaceholder": "Sélectionnez le genre",
+      "diagnosis": "Diagnostic",
+      "diagnosisPlaceholder": "Entrez le diagnostic",
+      "treatment": "Traitement",
+      "treatmentPlaceholder": "Entrez le traitement (optionnel)",
+      "date": "Date de consultation",
+      "datePlaceholder": "Sélectionnez la date"
+    },
+    "validation": {
+      "nameRequired": "Le nom et le diagnostic sont requis.",
+      "ageInvalid": "L'âge doit être un nombre valide entre 0 et 150."
+    },
+    "success": "Patient modifié avec succès !",
+    "error": "Erreur lors de la modification du patient."
   },
   "settings": {
     "language": "Langue",
